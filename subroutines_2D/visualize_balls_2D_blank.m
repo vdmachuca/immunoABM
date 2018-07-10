@@ -8,7 +8,6 @@ function visualize_balls_2D_blank(mySystem)
     %TUcolors = double(hot(3*double(mySystem.params.TUpmax))); %colormap for tumor cells
     %TUcolors = double(hot(3*double(9)));
     
-    %doesn't work, but is an idea
     if mySystem.TU.TUprop.isa == true
         TUcolors = [1 0 0];
     else 
