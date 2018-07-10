@@ -14,10 +14,6 @@ function visualize_balls_2D_blank(mySystem)
     else 
         TUcolors = [0 0 1];
     end 
-
-    TUcolorsa = [1 0 0];
-    TUcolorsb = [0 0 1];
-    
     
     %color depending on receptor expression
     %if mySystem.TUprop.isa == true

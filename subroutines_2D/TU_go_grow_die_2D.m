@@ -36,9 +36,11 @@ for iloop = 1:numel(act) % only for those that will do anything
             if Ps(currID) % symmetric division
                TUprop.isStem = [TUprop.isStem, true];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))]; 
+               TUprop.isa = [TUprop.isa, true];
             else % asymmetric division
                TUprop.isStem = [TUprop.isStem, false];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))-1];
+               TUprop.isa = [TUprop.isa, true];
                if ~TUprop.isStem(m.indxF(currID)) % reduce proliferation capacity
                 TUprop.Pcap(m.indxF(currID)) = TUprop.Pcap(m.indxF(currID))-1;
                end

@@ -5,7 +5,7 @@ function [mySystem,currentSummary] = updateSystem(mySystem,TUcells,TUprop,...
     % copy all variables back to mySystem
     mySystem.TU.TUcells = TUcells;
     
-    mySystem.TUprop.isa = TUprop.isa;
+    mySystem.TU.TUprop.isa = TUprop.isa;
     %mySystem.TUprop.isb = TUprop.isb;
 
     mySystem.TU.TUprop.isStem = TUprop.isStem;

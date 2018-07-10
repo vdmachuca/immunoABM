@@ -4,4 +4,6 @@ function [TUcells,TUprop] = removeTU(TUcells,TUprop,idx)
     TUprop.isStem(idx) = [];     % remove stemness property
     TUprop.Pcap(idx) = [];       % remove Pmax property
     
+    TUprop.isa(idx) = []; %remove receptor expression 
+    
 end
