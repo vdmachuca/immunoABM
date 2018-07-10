@@ -25,7 +25,7 @@ saveImage = true;
 saveVideo = true;
 
 % add/override some global variables after loading the system
-cnst.nSteps   = 50;    % how many iterations in the first place
+cnst.nSteps   = 20;    % how many iterations in the first place
 cnst.drawWhen = 2;    % draw after ... iterations
 expname = 'minimal';    % experiment name that will be used to save results
 

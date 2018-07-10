@@ -6,13 +6,8 @@ function [mySystem,currentSummary] = updateSystem(mySystem,TUcells,TUprop,...
     mySystem.TU.TUcells = TUcells;
     
     mySystem.TUprop.isa = TUprop.isa;
-    mySystem.TUprop.isb = TUprop.isb;
-    mySystem.TUprop.isc = TUprop.isc;
-    mySystem.TUprop.isab = TUprop.isab;
-    mySystem.TUprop.isbc = TUprop.isbc;
-    mySystem.TUprop.isac = TUprop.isac;
+    %mySystem.TUprop.isb = TUprop.isb;
 
-    %mySystem.TUprop.ant = TUprop.ant;
     mySystem.TU.TUprop.isStem = TUprop.isStem;
     mySystem.TU.TUprop.Pcap = TUprop.Pcap;
     
