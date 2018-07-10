@@ -15,15 +15,17 @@ catch
 end
 
 % P, D and Mi are mutually exclusive; Ps and De are dependent on P
+% all are either 1 or 0, depending on the conditionals in CellWhichAction.m, which depends on getAdjacent_2D.m
+
 [P,D,Mi] = CellWhichAction(m.randI,TUpprol,TUpdeath,TUpmig);
 
 Ps = P & rand(1,m.nC) <= TUps & TUprop.isStem(m.indxF); % symmetric division
 
 De = P & (TUprop.Pcap(m.indxF) == 0); % proliferation capacity exhaution -> Die
 
-del = D | De; % find dead / dying cells
+del = D | De; % find dead / dying cells; that | is 'or' so del will only be 0 if D=De=0
 
-act = find((P | Mi) & ~del); % live cells that will proliferate or migrate
+act = find((P | Mi) & ~del); % live cells that will proliferate or migrate; P=1 or Mi=0, and del=0
 
 for iloop = 1:numel(act) % only for those that will do anything
     currID = act(iloop); % number within stack of currently acting cell
@@ -42,7 +44,7 @@ for iloop = 1:numel(act) % only for those that will do anything
                TUprop.isStem = [TUprop.isStem, true];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))]; 
                
-               if  TUprop.isa == false
+               if  TUprop.isa(currID) == false
                    TUprop.isa = [TUprop.isa, false];
                    TUprop.isb = [TUprop.isb, true];
                else
@@ -58,7 +60,7 @@ for iloop = 1:numel(act) % only for those that will do anything
                 TUprop.Pcap(m.indxF(currID)) = TUprop.Pcap(m.indxF(currID))-1;
                end
                
-               if  TUprop.isa == false
+               if  TUprop.isa(currID) == false
                    TUprop.isa = [TUprop.isa, false];
                    TUprop.isb = [TUprop.isb, true];
                else
