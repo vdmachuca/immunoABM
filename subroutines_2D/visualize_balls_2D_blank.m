@@ -7,7 +7,17 @@ function visualize_balls_2D_blank(mySystem)
     % color depending on TUpmax 
     %TUcolors = double(hot(3*double(mySystem.params.TUpmax))); %colormap for tumor cells
     %TUcolors = double(hot(3*double(9)));
-    TUcolors = [1 0 0];
+    
+    %doesn't work, but is an idea
+    if mySystem.TU.TUprop.isa == true
+        TUcolors = [1 0 0];
+    else 
+        TUcolors = [0 0 1];
+    end 
+
+    TUcolorsa = [1 0 0];
+    TUcolorsb = [0 0 1];
+    
     
     %color depending on receptor expression
     %if mySystem.TUprop.isa == true
