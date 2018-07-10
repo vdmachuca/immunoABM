@@ -8,10 +8,10 @@ function visualize_balls_2D_blank(mySystem)
     %TUcolors = double(hot(3*double(mySystem.params.TUpmax))); %colormap for tumor cells
     %TUcolors = double(hot(3*double(9)));
     
-%     if mySystem.TU.TUprop.isa == 1
-%         TUcolors = [1 0 0];
+%     if mySystem.TU.TUprop.isStem == true
+%         TUcolors = [0 1 0];
 %     else
-%         TUcolors = [0 0 1];
+%         TUcolors = [1 0 0];
 %     end 
   
         
@@ -76,11 +76,12 @@ function visualize_balls_2D_blank(mySystem)
     %other OG scatter(xtu,ytu,mySystem.params.mycellsize,TUcolors,'filled')
     
     % plot tumor cells = with color dependent on receptor expression
-    if mySystem.TU.TUprop.isb == true
+    if mySystem.TU.TUprop.Pcap <= 100
         scatter(xtu,ytu,mySystem.params.mycellsize,[1 0 0],'filled')
     else
-        scatter(xtu,ytu,mySystem.params.mycellsize,[0 0 1],'filled')
+        scatter(xtu,ytu,mySystem.params.mycellsize,[0 1 0],'filled')
     end 
+
        
     try % try to draw immune cells, skip if this is impossible
     % create immune cell coordinates
