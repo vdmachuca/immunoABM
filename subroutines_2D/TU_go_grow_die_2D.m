@@ -16,9 +16,13 @@ end
 
 % P, D and Mi are mutually exclusive; Ps and De are dependent on P
 [P,D,Mi] = CellWhichAction(m.randI,TUpprol,TUpdeath,TUpmig);
+
 Ps = P & rand(1,m.nC) <= TUps & TUprop.isStem(m.indxF); % symmetric division
+
 De = P & (TUprop.Pcap(m.indxF) == 0); % proliferation capacity exhaution -> Die
+
 del = D | De; % find dead / dying cells
+
 act = find((P | Mi) & ~del); % live cells that will proliferate or migrate
 
 for iloop = 1:numel(act) % only for those that will do anything
@@ -38,12 +42,12 @@ for iloop = 1:numel(act) % only for those that will do anything
                TUprop.isStem = [TUprop.isStem, true];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))]; 
                
-               if  TUprop.isa == true
-                   TUprop.isa = [TUprop.isa, true];
-                   TUprop.isb = [TUprop.isb, false];
-               else
+               if  TUprop.isa == false
                    TUprop.isa = [TUprop.isa, false];
                    TUprop.isb = [TUprop.isb, true];
+               else
+                   TUprop.isa = [TUprop.isa, true];
+                   TUprop.isb = [TUprop.isb, false];
                end     
                
             else % asymmetric division
@@ -54,12 +58,12 @@ for iloop = 1:numel(act) % only for those that will do anything
                 TUprop.Pcap(m.indxF(currID)) = TUprop.Pcap(m.indxF(currID))-1;
                end
                
-               if  TUprop.isa == true
-                   TUprop.isa = [TUprop.isa, true];
-                   TUprop.isb = [TUprop.isb, false];
-               else
+               if  TUprop.isa == false
                    TUprop.isa = [TUprop.isa, false];
                    TUprop.isb = [TUprop.isb, true];
+               else
+                   TUprop.isa = [TUprop.isa, true];
+                   TUprop.isb = [TUprop.isb, false];
                end  
                
             end

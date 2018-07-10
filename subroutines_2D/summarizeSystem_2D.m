@@ -11,6 +11,11 @@ function summaryOut = summarizeSystem_2D(mySystem,cnst)
     summaryOut.TU_Num = numel(mySystem.TU.TUcells); % tumor cell number
     summaryOut.TU_FracStem = sum(mySystem.TU.TUprop.isStem) ...
         / numel(mySystem.TU.TUprop.isStem); % stem cell fraction
+    
+    summaryOut.TU_A = sum(mySystem.TU.TUprop.isa); %number receptor a cells
+    
+    summaryOut.TU_B = sum(mySystem.TU.TUprop.isb); %number receptor b cells
+    
     summaryOut.IM_Num = numel(mySystem.IM.IMcells); % immune cell number
     summaryOut.IM_FracExhaust = sum(mySystem.IM.IMprop.Kcap == 0) ...
         / numel(mySystem.IM.IMcells); % fraction of exhausted immune cells
