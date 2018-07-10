@@ -6,21 +6,17 @@ function [L, TUcells, IMcells, TUprop, IMprop] = initializeSystem_2D(N,M,TUpmax)
     
     % START INITIALIZE TUMOR CELLS ------------------------------------------- 
     %initiate multiple tumor cells
-%     posa =int32(N*round(M/2)-round(N/2));
-%     posb =int32(N*round(M/2)-round(N/2)+1);
-%     TUcells = [posa posb]; 
-    TUcells = int32(N*round(M/2)-round(N/2));
+    posa =int32(N*round(M/2)-round(N/2));
+    posb =int32(N*round(M/2)-round(N/2)+1);
+    TUcells = [posa posb]; 
+    %TUcells = int32(N*round(M/2)-round(N/2));
     
     %set property of first cells: receptor expression type 
-    TUprop.isa = true;
-    %TUprop.isb = [false true];
-
-    %another method to set receptor expression property
-    %TUprop.ant = [1 2 3 4 5 6];
+    TUprop.isa = [true false];
+    TUprop.isb = [false true];
     
-    
-    TUprop.Pcap = uint8(TUpmax); % set property of first cell: proliferation capacity
-    TUprop.isStem = true;        % set property of first cell: stemness
+    TUprop.Pcap = [uint8(TUpmax) uint8(TUpmax)]; % set property of first cell: proliferation capacity
+    TUprop.isStem = [true true];        % set property of first cell: stemness
     
     %original code: 
     %TUcells = int32(N*round(M/2)-round(N/2)); % first TU cell is centered

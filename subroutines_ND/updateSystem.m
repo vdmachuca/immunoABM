@@ -6,7 +6,7 @@ function [mySystem,currentSummary] = updateSystem(mySystem,TUcells,TUprop,...
     mySystem.TU.TUcells = TUcells;
     
     mySystem.TU.TUprop.isa = TUprop.isa;
-    %mySystem.TUprop.isb = TUprop.isb;
+    mySystem.TU.TUprop.isb = TUprop.isb;
 
     mySystem.TU.TUprop.isStem = TUprop.isStem;
     mySystem.TU.TUprop.Pcap = TUprop.Pcap;

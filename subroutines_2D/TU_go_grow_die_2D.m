@@ -34,16 +34,34 @@ for iloop = 1:numel(act) % only for those that will do anything
             newCell = uint32(ngh2(indO)); % find place for new cell
             TUcells = [TUcells, newCell(1)]; % add new cell to stack
             if Ps(currID) % symmetric division
+     
                TUprop.isStem = [TUprop.isStem, true];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))]; 
-               TUprop.isa = [TUprop.isa, true];
+               
+               if  TUprop.isa == true
+                   TUprop.isa = [TUprop.isa, true];
+                   TUprop.isb = [TUprop.isb, false];
+               else
+                   TUprop.isa = [TUprop.isa, false];
+                   TUprop.isb = [TUprop.isb, true];
+               end     
+               
             else % asymmetric division
+                
                TUprop.isStem = [TUprop.isStem, false];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))-1];
-               TUprop.isa = [TUprop.isa, true];
                if ~TUprop.isStem(m.indxF(currID)) % reduce proliferation capacity
                 TUprop.Pcap(m.indxF(currID)) = TUprop.Pcap(m.indxF(currID))-1;
                end
+               
+               if  TUprop.isa == true
+                   TUprop.isa = [TUprop.isa, true];
+                   TUprop.isb = [TUprop.isb, false];
+               else
+                   TUprop.isa = [TUprop.isa, false];
+                   TUprop.isb = [TUprop.isb, true];
+               end  
+               
             end
         else % migration
             L(TUcells(m.indxF(currID))) = false; % freeing spot
