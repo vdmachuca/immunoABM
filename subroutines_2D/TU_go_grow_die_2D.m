@@ -44,12 +44,12 @@ for iloop = 1:numel(act) % only for those that will do anything
                TUprop.isStem = [TUprop.isStem, true];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))]; 
                
-               if  TUprop.isa(currID) == false
-                   TUprop.isa = [TUprop.isa, false];
-                   TUprop.isb = [TUprop.isb, true];
-               else
+               if  TUprop.isa(currID)
                    TUprop.isa = [TUprop.isa, true];
                    TUprop.isb = [TUprop.isb, false];
+               else
+                   TUprop.isa = [TUprop.isa, false];
+                   TUprop.isb = [TUprop.isb, true];
                end     
                
             else % asymmetric division
@@ -60,12 +60,12 @@ for iloop = 1:numel(act) % only for those that will do anything
                 TUprop.Pcap(m.indxF(currID)) = TUprop.Pcap(m.indxF(currID))-1;
                end
                
-               if  TUprop.isa(currID) == false
-                   TUprop.isa = [TUprop.isa, false];
-                   TUprop.isb = [TUprop.isb, true];
-               else
+               if  TUprop.isa(currID)
                    TUprop.isa = [TUprop.isa, true];
                    TUprop.isb = [TUprop.isb, false];
+               else
+                   TUprop.isa = [TUprop.isa, false];
+                   TUprop.isb = [TUprop.isb, true];
                end  
                
             end
