@@ -1,6 +1,6 @@
 function [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate)
 
-if IMinflRate>0 % if an immune influx is desired; need to change this so influxes are timed
+if IMinflRate>0 % if an immune influx is desired
     
 % if there are empty locations
 if sum(~L(:))>0
@@ -18,8 +18,11 @@ IMprop.Pcap = [IMprop.Pcap, repmat(IMpmax,1,nNewCells)];  % add properties
 IMprop.Kcap = [IMprop.Kcap, repmat(IMkmax,1,nNewCells)];  % add properties
 IMprop.engaged = [IMprop.engaged, zeros(1,nNewCells)];    % add properties
 
-%IMprop.isa = [IMprop.isa, repmat(randi([0 1]),1,nNewCells)];    % add properties
-%IMprop.isb = [IMprop.isb, repmat(randi([0 1]),1,nNewCells)];    % add properties
+%IMprop.speca = [IMprop.speca, zeros(1,nNewCells)];    % add properties
+%IMprop.specb = [IMprop.specb, zeros(1,nNewCells)];    % add properties
+
+IMprop.speca = [IMprop.speca, randi([0 1],1,nNewCells)];    % add properties
+IMprop.specb = [IMprop.specb, randi([0 1],1,nNewCells)];    % add properties
 
 end
 

@@ -32,8 +32,8 @@ function [L, TUcells, IMcells, TUprop, IMprop] = initializeSystem_2D(N,M,TUpmax)
     IMprop.Kcap = uint8([]); % add properties: max killing capacity
     IMprop.engaged = uint8([]); % add properties: engagement in killing
     
-    %IMprop.isa = uint8([]); %specificity
-    %IMprop.isb = uint8([]); %specificity
+    IMprop.speca = uint8([]); %specificity
+    IMprop.specb = uint8([]); %specificity
     
      % END INITIALIZE IMMUNE CELLS --------------------------------------------
 

@@ -5,8 +5,8 @@ function [IMcells,IMprop] = removeIM(IMcells,IMprop,idx)
     IMprop.Kcap(idx) = [];       % remove Kmax property
     IMprop.engaged(idx) = [];       % remove engagement property
     
-    %IMprop.isa(idx) = []; % remove specificity property
-    %IMprop.isa(idx) = []; % remove specificity property
+    IMprop.speca(idx) = []; % remove specificity property
+    IMprop.specb(idx) = []; % remove specificity property
     
 end
 
