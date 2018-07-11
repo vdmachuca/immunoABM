@@ -1,6 +1,6 @@
 function [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate)
 
-if IMinflRate>0 % if an immune influx is desired
+if IMinflRate>0 % if an immune influx is desired; need to change this so influxes are timed
     
 % if there are empty locations
 if sum(~L(:))>0
@@ -13,9 +13,14 @@ if sum(~L(:))>0
 L(coordsNewIMcells) = true; % place new cells on grid
 nNewCells = numel(coordsNewIMcells); % number of new immune cells
 IMcells = [IMcells, coordsNewIMcells]; % add new cells to stack
+
 IMprop.Pcap = [IMprop.Pcap, repmat(IMpmax,1,nNewCells)];  % add properties
 IMprop.Kcap = [IMprop.Kcap, repmat(IMkmax,1,nNewCells)];  % add properties
 IMprop.engaged = [IMprop.engaged, zeros(1,nNewCells)];    % add properties
+
+%IMprop.isa = [IMprop.isa, repmat(randi([0 1]),1,nNewCells)];    % add properties
+%IMprop.isb = [IMprop.isb, repmat(randi([0 1]),1,nNewCells)];    % add properties
+
 end
 
 end

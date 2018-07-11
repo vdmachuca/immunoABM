@@ -15,6 +15,10 @@ function [mySystem,currentSummary] = updateSystem(mySystem,TUcells,TUprop,...
     mySystem.IM.IMprop.Kcap = IMprop.Kcap;
     mySystem.IM.IMprop.Pcap = IMprop.Pcap;  
     mySystem.IM.IMprop.engaged = IMprop.engaged;  
+    
+    %mySystem.IM.IMprop.isa = IMprop.isa; 
+    %mySystem.IM.IMprop.isb = IMprop.isb; 
+    
     mySystem.grid.ChtaxMap = ChtaxMap;
     mySystem.grid.HypoxMap = HypoxMap;
     mySystem.grid.Ln = Ln;
