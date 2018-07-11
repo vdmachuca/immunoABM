@@ -12,8 +12,10 @@ if sum(candidates(:)) % if there are candidates
     if ~isempty(actK) % if there is a cell that is going to kill
     targetIDs = int32(zeros(1,0)); % preallocate
     killerIDs = int32(zeros(1,0)); % preallocate
+    
     % start tumor cell killing, same random order as before
     St = bsxfun(@plus,IMcells(actK),nh.aux(nh.Pms(:,randi(nh.nP,1,length(actK)))));
+    
     % iterate through all immune cells and look at their neighborhood
     for jj = 1:size(St,2) 
         neighbPosit = St(randperm(length(nh.aux)),jj);

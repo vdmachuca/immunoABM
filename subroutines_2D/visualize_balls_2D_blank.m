@@ -10,8 +10,11 @@ function visualize_balls_2D_blank(mySystem)
     TUcolors =[1 0 0;0 1 0];
     code = 1 + mySystem.TU.TUprop.isa;
     
-    mySystem.TU.TUprop.isa
-    mySystem.TU.TUprop.isb
+    %for when cells can be any combo of a, b, and/or c
+    %code= mySystem.TU.TUprop.isa + 2*mySystem.TU.TUprop.isb + 4*mySystem.TU.TUprop.isc
+    
+    %for when cells can also be none of above...
+    %code=mySystem.TU.TUprop.isa + 2*mySystem.TU.TUprop.isb + 4*mySystem.TU.TUprop.isc +1
  
     IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3))); % color map for immune cells
        
