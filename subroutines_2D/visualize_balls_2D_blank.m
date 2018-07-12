@@ -7,8 +7,11 @@ function visualize_balls_2D_blank(mySystem)
     % color depending on TUpmax 
     %TUcolors = double(hot(3*double(mySystem.params.TUpmax))); %colormap for tumor cells
     
+    %color by receptor expression
+    %[1 0 0] = red, b
+    %[0 1 0]= green, a
     TUcolors =[1 0 0;0 1 0];
-    code = 1 + mySystem.TU.TUprop.isa;
+    TUcode = 1 + mySystem.TU.TUprop.isa;
     
     %for when cells can be any combo of a, b, and/or c
     %code= mySystem.TU.TUprop.isa + 2*mySystem.TU.TUprop.isb + 4*mySystem.TU.TUprop.isc
@@ -16,7 +19,15 @@ function visualize_balls_2D_blank(mySystem)
     %for when cells can also be none of above...
     %code=mySystem.TU.TUprop.isa + 2*mySystem.TU.TUprop.isb + 4*mySystem.TU.TUprop.isc +1
  
-    IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3))); % color map for immune cells
+    %IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3))); % color map for immune cells
+    
+    %CAR color based on specificity. 
+    %[0 0 1] = blue, both a and b
+    %[1 0 0] = red, just b
+    %[0 1 0] = green, just a 
+    %[1 0 1] = magenta, neither a nor b
+    IMcolors = [0 0 1;1 0 0;0 1 0;1 0 1];
+    IMcode = 1  + mySystem.IM.IMprop.speca + 2*mySystem.IM.IMprop.specb;
        
     % prepare figure background
     chtaxImage = double(mySystem.grid.ChtaxMap);
@@ -72,7 +83,7 @@ function visualize_balls_2D_blank(mySystem)
     % retrieve tumor cell colors
     %myTuc = TUcolors(mySystem.TU.TUprop.Pcap+5,:);
     
-    myTuc = TUcolors(code,:);
+    myTuc = TUcolors(TUcode,:);
     
     % plot tumor cells
     scatter(xtu,ytu,mySystem.params.mycellsize,myTuc,'filled')
@@ -84,7 +95,8 @@ function visualize_balls_2D_blank(mySystem)
     yim = mod(mySystem.IM.IMcells,mySystem.grid.N);
     xim = ceil(mySystem.IM.IMcells/mySystem.grid.N);
     % retrieve immune cell colors
-    myImc = IMcolors(mySystem.IM.IMprop.Kcap+1,:);
+    myImc = IMcolors(IMcode,:);
+    
     % plot immune cells
     scatter(xim,yim,mySystem.params.mycellsize,myImc,'filled')
     catch
