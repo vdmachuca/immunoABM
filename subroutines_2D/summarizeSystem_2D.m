@@ -20,6 +20,11 @@ function summaryOut = summarizeSystem_2D(mySystem,cnst)
     summaryOut.IM_FracExhaust = sum(mySystem.IM.IMprop.Kcap == 0) ...
         / numel(mySystem.IM.IMcells); % fraction of exhausted immune cells
     
+    %summaryOut.IM_A = sum(mySystem.IM.IMprop.speca); %number a specific T-cells
+    
+    %summaryOut.IM_B = sum(mySystem.IM.IMprop.specb); %number b specific T-cells
+    
+    
 	% if there is a chemotaxis map, then create spatial results
     if isfield(mySystem.grid,'ChtaxMap')
     Mask_intumor = imfill(mySystem.grid.ChtaxMap<cnst.inTumor,'holes');   % binary mask ROI 1

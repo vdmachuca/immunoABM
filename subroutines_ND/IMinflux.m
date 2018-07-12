@@ -18,14 +18,14 @@ IMprop.Pcap = [IMprop.Pcap, repmat(IMpmax,1,nNewCells)];  % add properties
 IMprop.Kcap = [IMprop.Kcap, repmat(IMkmax,1,nNewCells)];  % add properties
 IMprop.engaged = [IMprop.engaged, zeros(1,nNewCells)];    % add properties
 
-%IMprop.speca = [IMprop.speca, ones(1,nNewCells)];    % add properties
-%IMprop.specb = [IMprop.specb, ones(1,nNewCells)];    % add properties
+IMprop.speca = [IMprop.speca, ones(1,nNewCells)];    % add properties
+IMprop.specb = [IMprop.specb, ones(1,nNewCells)];    % add properties
 
 %IMprop.speca = [IMprop.speca, randi([0 1],1,nNewCells)];    % add properties
 %IMprop.specb = [IMprop.specb, randi([0 1],1,nNewCells)];    % add properties
 
-IMprop.speca = [IMprop.speca, ];    % add properties
-IMprop.specb = [IMprop.specb, ];    % add properties
+%IMprop.speca = [IMprop.speca, ];    % add properties
+%IMprop.specb = [IMprop.specb, ];    % add properties
 
 
 end
