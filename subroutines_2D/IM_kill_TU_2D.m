@@ -51,9 +51,9 @@ if sum(candidates(:)) % if there are candidates
         neighbPosit = St(randperm(length(nh.aux)),jj);
         
         if IMprop.speca
-            botha=ismember(neighbPosit(:),TUcells(:));
-            instakilla = TUprop.isa(botha);
-            %instakill = ismember(neighbPosit(:),TUcells(:));
+            
+            TUcellsa=TUcells(TUprop.isa);
+            instakilla=ismember(neighbPosit(:),TUcellsa(:));
             
             % if the cell encounters another cell to kill
             if sum(instakilla) > 0
@@ -66,9 +66,9 @@ if sum(candidates(:)) % if there are candidates
                 killerIDs = [killerIDs, IMcells(actK(jj))]; % add killer ID to stack
             end
         elseif IMprop.specb
-            bothb=ismember(neighbPosit(:),TUcells(:));
-            instakillb = TUprop.isb(bothb);
-            %instakill = ismember(neighbPosit(:),TUcells(:));
+            
+            TUcellsb=TUcells(TUprop.isb);
+            instakillb=ismember(neighbPosit(:),TUcellsb(:));
             
             % if the cell encounters another cell to kill
             if sum(instakillb) > 0
