@@ -50,8 +50,24 @@ if sum(candidates(:)) % if there are candidates
     for jj = 1:size(St,2)  
         neighbPosit = St(randperm(length(nh.aux)),jj);
         
-        if IMprop.speca
+        if IMprop.speca(1)&&IMprop.specb(1)
             
+            instakill = ismember(neighbPosit(:),TUcells(:));
+%         
+        % if the cell encounters another cell to kill
+            if sum(instakill) > 0
+                % if more than 1 possible targets then use the first one
+                
+                possibleTargets = neighbPosit(instakill); % possible targets
+                
+                killwhat = int32(possibleTargets(1)); % kill only the first candidate
+                
+                targetIDs = [targetIDs, killwhat]; % add target ID to stack
+                killerIDs = [killerIDs, IMcells(actK(jj))]; % add killer ID to stack
+            end
+        
+        elseif IMprop.speca(1)
+
             TUcellsa=TUcells(TUprop.isa);
             instakilla=ismember(neighbPosit(:),TUcellsa(:));
             
@@ -65,7 +81,7 @@ if sum(candidates(:)) % if there are candidates
                 targetIDs = [targetIDs, killwhata]; % add target ID to stack
                 killerIDs = [killerIDs, IMcells(actK(jj))]; % add killer ID to stack
             end
-        elseif IMprop.specb
+        elseif IMprop.specb(1)
             
             TUcellsb=TUcells(TUprop.isb);
             instakillb=ismember(neighbPosit(:),TUcellsb(:));
@@ -79,8 +95,8 @@ if sum(candidates(:)) % if there are candidates
                 
                 targetIDs = [targetIDs, killwhatb]; % add target ID to stack
                 killerIDs = [killerIDs, IMcells(actK(jj))]; % add killer ID to stack
-            end
-        end  
+            end 
+        end 
     end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -88,8 +104,7 @@ if sum(candidates(:)) % if there are candidates
     % happens that one tumor cell is simultaneously killed by two immune cells,
     % then both will be exhausted
     auxKillTU = ismember(TUcells,targetIDs); % which tumor cells are killed
-    auxKillIM = ismember(IMcells,killerIDs); % which immmune cells do kill\
-    
+    auxKillIM = ismember(IMcells,killerIDs); % which immmune cells do kill\   
     
     if sum(auxKillTU)>0                 % if killing happens, then update  
         L(TUcells(auxKillTU)) = false;  % FIRST remove from L grid
