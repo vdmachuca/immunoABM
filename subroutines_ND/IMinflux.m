@@ -25,7 +25,7 @@ if sum(~L(:))>0
 %[~,coordsNewIMcells] = datasample(L(5000:5500),IMinflRate,'Replace',false,'Weights',uint8(~L(5000:5500)));
 %[~,coordsNewIMcells] = datasample(L(:),IMinflRate,'Replace',false);
 
-coordsNewIMcells = [5000:55000]; 
+coordsNewIMcells = 30150; 
 
 L(coordsNewIMcells) = true; % place new cells on grid
 
