@@ -19,6 +19,7 @@ function visualize_balls_2D_blank(mySystem)
     %for when cells can also be none of above...
     %code=mySystem.TU.TUprop.isa + 2*mySystem.TU.TUprop.isb + 4*mySystem.TU.TUprop.isc +1
  
+    %OG code for IMcolors
     IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3))); % color map for immune cells
     
     %CAR color based on specificity. 
@@ -95,7 +96,10 @@ function visualize_balls_2D_blank(mySystem)
     yim = mod(mySystem.IM.IMcells,mySystem.grid.N);
     xim = ceil(mySystem.IM.IMcells/mySystem.grid.N);
     % retrieve immune cell colors
+    %OG code for myIMC
     myImc = IMcolors(mySystem.IM.IMprop.Kcap+1,:);
+    
+    %new code for myIMC
     %myImc = IMcolors(IMcode,:);
     
     % plot immune cells
