@@ -22,7 +22,7 @@ if IMinflRate>0 % if an immune influx is desired
 if sum(~L(:))>0
     
 %place N immune cells in empty locations
-[~,coordsNewIMcells] = datasample(L(500:100000),IMinflRate,'Replace',false,'Weights',uint8(~L(500:100000)));
+[~,coordsNewIMcells] = datasample(L(300:800),IMinflRate,'Replace',false,'Weights',uint8(~L(300:800)));
 %[~,coordsNewIMcells] = datasample(L(:),IMinflRate,'Replace',false);
 
 %coordsNewIMcells = length(L); 
