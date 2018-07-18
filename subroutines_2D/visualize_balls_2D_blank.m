@@ -43,11 +43,11 @@ function visualize_balls_2D_blank(mySystem)
     ch2 = backgroundImage(:,:,2);
     ch3 = backgroundImage(:,:,3);
     
-    % add fibrosis to background image
-    ch1(mySystem.grid.Lf) = 246/255;
-    ch2(mySystem.grid.Lf) = 250/255;
-    ch3(mySystem.grid.Lf) = 5/255;
-    
+%     % add FIBROSIS to background image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     ch1(mySystem.grid.Lf) = 246/255;
+%     ch2(mySystem.grid.Lf) = 250/255;
+%     ch3(mySystem.grid.Lf) = 5/255;
+%     
     % add necrosis to background image
     ch1(mySystem.grid.Ln) = 0;
     ch2(mySystem.grid.Ln) = 0;

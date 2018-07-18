@@ -89,16 +89,16 @@ end
 % END NECROSIS  ----------------------------------------------
 
 % START FIBROSIS ------------------------------------------------------
-fibrosify = ~IMprop.Kcap & (rand(1,numel(IMcells))<probSeedFibr);
-if sum(fibrosify) % exchausted immune cells seed fibrosis
-    Lfseed = false(size(L)); % preallocate fibrosis seed map
-    Lfseed(IMcells(fibrosify)) = true;
-    Lfseed = expandSeedMap(Lfseed,smoothSE,fibrFrac); % smooth and expand fibrotic seed map
-    Lfseed(TUcells) = false; 
-    Lf(Lfseed & ~Ln) = true; % update fibrosis grid
-    [IMcells,IMprop] = removeIM(IMcells,IMprop,fibrosify); % remove fibrosifying immune cells
-    L(Lf) = true; % update L grid (master grid)
-end
+% fibrosify = ~IMprop.Kcap & (rand(1,numel(IMcells))<probSeedFibr);
+% if sum(fibrosify) % exchausted immune cells seed fibrosis
+%     Lfseed = false(size(L)); % preallocate fibrosis seed map
+%     Lfseed(IMcells(fibrosify)) = true;
+%     Lfseed = expandSeedMap(Lfseed,smoothSE,fibrFrac); % smooth and expand fibrotic seed map
+%     Lfseed(TUcells) = false; 
+%     Lf(Lfseed & ~Ln) = true; % update fibrosis grid
+%     [IMcells,IMprop] = removeIM(IMcells,IMprop,fibrosify); % remove fibrosifying immune cells
+%     L(Lf) = true; % update L grid (master grid)
+% end
 % END FIBROSIS ----------------------------------------------------------
 
 % START DRAWING ---------------------------------------------------------

@@ -110,7 +110,7 @@ if sum(candidates(:)) % if there are candidates
         L(TUcells(auxKillTU)) = false;  % FIRST remove from L grid
         Lt(TUcells(auxKillTU)) = false;  % ... and remove from Lt grid
         [TUcells,TUprop] = removeTU(TUcells,TUprop,auxKillTU); % second, remove from stack
-        IMprop.Kcap(auxKillIM) = IMprop.Kcap(auxKillIM)-1; % exhaust killers; play with this in the future
+        IMprop.Kcap(auxKillIM) = IMprop.Kcap(auxKillIM)-1; % exhaust killers
         IMprop.engaged(auxKillIM) = engagementDuration; % killers are engaged
     end
 
