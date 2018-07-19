@@ -1,4 +1,4 @@
-function [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate)
+function [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate,i)
 
 % if IMinflRate>0 % if an immune influx is desired
 %     
@@ -17,39 +17,58 @@ function [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %have IMinflRate CARs flow in from the point source
-if IMinflRate>0 % if an immune influx is desired
+
+%if ismember(i,[5,6,7,8,9,10])
+if i<15
+
+    if IMinflRate>0 % if an immune influx is desired
+        
+        if sum(~L(:))>0
+            
+            %place N immune cells in empty locations
+            %[~,coordsNewIMcells] = datasample(L(5000:5500),IMinflRate,'Replace',false,'Weights',uint8(~L(5000:5500)));
+            %[~,coordsNewIMcells] = datasample(L(:),IMinflRate,'Replace',false);
+            
+            coordsNewIMcells = 30150;
+            
+            L(coordsNewIMcells) = true; % place new cells on grid
+            
+            nNewCells = numel(coordsNewIMcells); % number of new immune cells
+            IMcells = [IMcells, coordsNewIMcells]; % add new cells to stack
+            
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            
+            IMprop.Pcap = [IMprop.Pcap, repmat(IMpmax,1,nNewCells)];  % add properties
+            IMprop.Kcap = [IMprop.Kcap, repmat(IMkmax,1,nNewCells)];  % add properties
+            IMprop.engaged = [IMprop.engaged, zeros(1,nNewCells)];    % add properties
+            
+            IMprop.speca = [IMprop.speca, ones(1,nNewCells)];    % add properties
+            IMprop.specb = [IMprop.specb, ones(1,nNewCells)];    % add properties
+            
+            %IMprop.speca = [IMprop.speca, randi([0 1],1,nNewCells)];    % add properties
+            %IMprop.specb = [IMprop.specb, randi([0 1],1,nNewCells)];    % add properties
+            
+            %IMprop.speca = [IMprop.speca, ];    % add properties
+            %IMprop.specb = [IMprop.specb, ];    % add properties
+            
+            
+        end %sum(~L(:))>0
+        
+    end
+% else 
+%     
+%     IMcells = IMcells;
+%                        
+%     IMprop.Pcap = IMprop.Pcap;  
+%     IMprop.Kcap = IMprop.Kcap;
+%     IMprop.engaged = IMprop.engaged;
+%             
+%     IMprop.speca = IMprop.speca;    
+%     IMprop.specb = IMprop.specb;   
     
-if sum(~L(:))>0
-    
-%place N immune cells in empty locations
-%[~,coordsNewIMcells] = datasample(L(5000:5500),IMinflRate,'Replace',false,'Weights',uint8(~L(5000:5500)));
-%[~,coordsNewIMcells] = datasample(L(:),IMinflRate,'Replace',false);
-
-coordsNewIMcells = 30150; 
-
-L(coordsNewIMcells) = true; % place new cells on grid
-
-nNewCells = numel(coordsNewIMcells); % number of new immune cells
-IMcells = [IMcells, coordsNewIMcells]; % add new cells to stack
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-IMprop.Pcap = [IMprop.Pcap, repmat(IMpmax,1,nNewCells)];  % add properties
-IMprop.Kcap = [IMprop.Kcap, repmat(IMkmax,1,nNewCells)];  % add properties
-IMprop.engaged = [IMprop.engaged, zeros(1,nNewCells)];    % add properties
-
-IMprop.speca = [IMprop.speca, ones(1,nNewCells)];    % add properties
-IMprop.specb = [IMprop.specb, ones(1,nNewCells)];    % add properties
-
-%IMprop.speca = [IMprop.speca, randi([0 1],1,nNewCells)];    % add properties
-%IMprop.specb = [IMprop.specb, randi([0 1],1,nNewCells)];    % add properties
-
-%IMprop.speca = [IMprop.speca, ];    % add properties
-%IMprop.specb = [IMprop.specb, ];    % add properties
-
+% end
 
 end
 
-end
 
-end
+
