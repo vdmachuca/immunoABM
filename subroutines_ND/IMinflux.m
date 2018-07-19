@@ -18,7 +18,8 @@ function [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %have IMinflRate CARs flow in from the point source
 
-if ismember(i,[1:5,25:30])
+
+if ismember(i,[1,10,20,30,40])
 %if i<15
 
     if IMinflRate>0 % if an immune influx is desired
