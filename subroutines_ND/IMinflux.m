@@ -18,8 +18,8 @@ function [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %have IMinflRate CARs flow in from the point source
 
-%if ismember(i,[5,6,7,8,9,10])
-if i<15
+if ismember(i,[1:5,25:30])
+%if i<15
 
     if IMinflRate>0 % if an immune influx is desired
         
@@ -30,7 +30,8 @@ if i<15
             %[~,coordsNewIMcells] = datasample(L(:),IMinflRate,'Replace',false);
             
             coordsNewIMcells = 30150;
-            
+            %coordsNewIMcells = (30150:30160);
+           
             L(coordsNewIMcells) = true; % place new cells on grid
             
             nNewCells = numel(coordsNewIMcells); % number of new immune cells
