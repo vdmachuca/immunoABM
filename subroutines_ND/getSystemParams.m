@@ -18,16 +18,19 @@ mySystem.params.TUps = 0.7;         % probability of symmetric division, default
 % START INITIALIZE LYMPHOCYTES ------------------------------------------
 mySystem.params.IMkmax = 5;         % killing capacity of immune cells, default 5
 mySystem.params.IMpmax = 10;        % proliferation capacity of immune cells, default 10
-mySystem.params.IMpprol = 0.0449;   % HISTO GENERATED - probability of proliferation
+%mySystem.params.IMpprol = 0.0449;   % HISTO GENERATED - probability of proliferation
+mySystem.params.IMpprol = 0;
+
 mySystem.params.IMpmig = 0.8;       % probability of migrating, default 0.7
 mySystem.params.IMpkill = 0.1;      % probability of killing, default 0.1
 mySystem.params.IMpdeath = 1-(1-0.0037)^4;  % HISTO GENERATED - probability of spontaneous death
 mySystem.params.IMrwalk = 0.8;      % random influence on movement, default 0.75
 mySystem.params.IMspeed = 97;       % speed of immune cell movement, default 97
 
-mySystem.params.IMinfluxProb = 0.3; % probability of immune cell influx, def. 0.72
+mySystem.params.IMinfluxProb = 1; % probability of immune cell influx, def. 0.72
 
-mySystem.params.IMinflRate = 1;     % how many immune cells appear simultaneously
+%mySystem.params.IMinflRate = 1;     % how many immune cells appear simultaneously
+mySystem.params.IMinflRate = 40;
 
 mySystem.params.engagementDuration = 48; % how many intermed. steps is a killing cell engaged? default 48 (=6 hrs)
 % END INITIALIZE LYMPHOCYTES --------------------------------------------

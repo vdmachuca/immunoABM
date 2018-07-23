@@ -17,9 +17,9 @@ function [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %have IMinflRate CARs flow in from the point source
+%length(coordsNewIMcells) are added each DAY
 
-
-if ismember(i,[1,10,20,30,40])
+if ismember(i,[20,40,60,80])
 %if i<15
 
     if IMinflRate>0 % if an immune influx is desired
@@ -30,8 +30,8 @@ if ismember(i,[1,10,20,30,40])
             %[~,coordsNewIMcells] = datasample(L(5000:5500),IMinflRate,'Replace',false,'Weights',uint8(~L(5000:5500)));
             %[~,coordsNewIMcells] = datasample(L(:),IMinflRate,'Replace',false);
             
-            coordsNewIMcells = 30150;
-            %coordsNewIMcells = (30150:30160);
+            %coordsNewIMcells = [30150,30151,30152,30153,30154,30155,30156,30157,30158,30159];
+            coordsNewIMcells = 30150:30160;
            
             L(coordsNewIMcells) = true; % place new cells on grid
             
@@ -57,18 +57,18 @@ if ismember(i,[1,10,20,30,40])
         end %sum(~L(:))>0
         
     end
-% else 
-%     
-%     IMcells = IMcells;
-%                        
-%     IMprop.Pcap = IMprop.Pcap;  
-%     IMprop.Kcap = IMprop.Kcap;
-%     IMprop.engaged = IMprop.engaged;
-%             
-%     IMprop.speca = IMprop.speca;    
-%     IMprop.specb = IMprop.specb;   
+else 
     
-% end
+    IMcells = IMcells;
+                       
+    IMprop.Pcap = IMprop.Pcap;  
+    IMprop.Kcap = IMprop.Kcap;
+    IMprop.engaged = IMprop.engaged;
+            
+    IMprop.speca = IMprop.speca;    
+    IMprop.specb = IMprop.specb;   
+    
+end
 
 end
 

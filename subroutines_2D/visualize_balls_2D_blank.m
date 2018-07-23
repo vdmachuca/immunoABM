@@ -20,7 +20,21 @@ function visualize_balls_2D_blank(mySystem)
     %code=mySystem.TU.TUprop.isa + 2*mySystem.TU.TUprop.isb + 4*mySystem.TU.TUprop.isc +1
  
     %OG code for IMcolors
-    IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3))); % color map for immune cells
+    %IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3))); % color map for immune cells
+    
+    
+    if mySystem.grid.StepsDone/2==10
+        myImc = [1 0 1];
+    elseif mySystem.grid.StepsDone/2==20
+        myImc = [0.75, 0.75, 0];
+    elseif mySystem.grid.StepsDone/2==30
+        myImc = [0, 0.5, 0];
+    elseif mySystem.grid.StepsDone/2==40
+        myImc = [0.4940, 0.1840, 0.5560];
+    else 
+        IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3)));
+        myImc = IMcolors(mySystem.IM.IMprop.Kcap+1,:);
+    end
     
     %CAR color based on specificity. 
     %[0 0 1] = blue, both a and b
@@ -97,7 +111,7 @@ function visualize_balls_2D_blank(mySystem)
     xim = ceil(mySystem.IM.IMcells/mySystem.grid.N);
     % retrieve immune cell colors
     %OG code for myIMC
-    myImc = IMcolors(mySystem.IM.IMprop.Kcap+1,:);
+    %myImc = IMcolors(mySystem.IM.IMprop.Kcap+1,:);
     
     %new code for myIMC
     %myImc = IMcolors(IMcode,:);
