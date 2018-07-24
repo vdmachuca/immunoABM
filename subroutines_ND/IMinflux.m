@@ -31,8 +31,13 @@ if ismember(i,[20,40,60,80])
             %[~,coordsNewIMcells] = datasample(L(:),IMinflRate,'Replace',false);
             
             %coordsNewIMcells = [30150,30151,30152,30153,30154,30155,30156,30157,30158,30159];
-            coordsNewIMcells = 30150:30160;
-           
+            coordsNewIMcells = 30151:30160;
+            
+            %x = [30150:3016, 29830:29840];
+            %coordsNewIMcells = randi([1 numel(x)],1,IMinflRate);
+            %coordsNewIMcells = randi([30150 32150],1,IMinflRate);
+            
+            
             L(coordsNewIMcells) = true; % place new cells on grid
             
             nNewCells = numel(coordsNewIMcells); % number of new immune cells
@@ -44,33 +49,23 @@ if ismember(i,[20,40,60,80])
             IMprop.Kcap = [IMprop.Kcap, repmat(IMkmax,1,nNewCells)];  % add properties
             IMprop.engaged = [IMprop.engaged, zeros(1,nNewCells)];    % add properties
             
-            IMprop.speca = [IMprop.speca, ones(1,nNewCells)];    % add properties
-            IMprop.specb = [IMprop.specb, ones(1,nNewCells)];    % add properties
-            
+%             IMprop.speca = [IMprop.speca, ones(1,nNewCells)];    % add properties
+%             IMprop.specb = [IMprop.specb, ones(1,nNewCells)];    % add properties
+%             
             %IMprop.speca = [IMprop.speca, randi([0 1],1,nNewCells)];    % add properties
             %IMprop.specb = [IMprop.specb, randi([0 1],1,nNewCells)];    % add properties
             
             %IMprop.speca = [IMprop.speca, ];    % add properties
             %IMprop.specb = [IMprop.specb, ];    % add properties
             
-            
-        end %sum(~L(:))>0
-        
-    end
-else 
-    
-    IMcells = IMcells;
-                       
-    IMprop.Pcap = IMprop.Pcap;  
-    IMprop.Kcap = IMprop.Kcap;
-    IMprop.engaged = IMprop.engaged;
-            
-    IMprop.speca = IMprop.speca;    
-    IMprop.specb = IMprop.specb;   
-    
+            %half specificity a, half specificity b
+            IMprop.speca = [IMprop.speca,[false(1,floor(nNewCells/2)) ones(1,nNewCells-floor(nNewCells/2))]];
+            IMprop.specb = [IMprop.specb,[ones(1,floor(nNewCells/2)) false(1,nNewCells-floor(nNewCells/2))]];
+
+       end 
+   end
 end
 
-end
 
 
 

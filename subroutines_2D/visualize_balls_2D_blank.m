@@ -22,27 +22,27 @@ function visualize_balls_2D_blank(mySystem)
     %OG code for IMcolors
     %IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3))); % color map for immune cells
     
+    %color burst for each infusion
+%     if mySystem.grid.StepsDone/2==10
+%         myImc = [1 0 1];
+%     elseif mySystem.grid.StepsDone/2==20
+%         myImc = [0.75, 0.75, 0];
+%     elseif mySystem.grid.StepsDone/2==30
+%         myImc = [0, 0.5, 0];
+%     elseif mySystem.grid.StepsDone/2==40
+%         myImc = [0.4940, 0.1840, 0.5560];
+%     else 
+%         IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3)));
+%         myImc = IMcolors(mySystem.IM.IMprop.Kcap+1,:);
+%     end
     
-    if mySystem.grid.StepsDone/2==10
-        myImc = [1 0 1];
-    elseif mySystem.grid.StepsDone/2==20
-        myImc = [0.75, 0.75, 0];
-    elseif mySystem.grid.StepsDone/2==30
-        myImc = [0, 0.5, 0];
-    elseif mySystem.grid.StepsDone/2==40
-        myImc = [0.4940, 0.1840, 0.5560];
-    else 
-        IMcolors = flipud(double(blugr(double(mySystem.params.IMkmax)+3)));
-        myImc = IMcolors(mySystem.IM.IMprop.Kcap+1,:);
-    end
-    
-    %CAR color based on specificity. 
-    %[0 0 1] = blue, both a and b
-    %[1 0 0] = red, just b
-    %[0 1 0] = green, just a 
-    %[1 0 1] = magenta, neither a nor b
-    %IMcolors = [0 0 1;1 0 0;0 1 0;1 0 1];
-    %IMcode = 1  + mySystem.IM.IMprop.speca + 2*mySystem.IM.IMprop.specb;
+%     CAR color based on specificity. 
+%     [0 0 1] = magenta, neither a nor b 
+%     [0 1 0] = green, just a
+%     [1 0 0] = red, just b 
+%     [1 0 1] = blue, both a and b
+    IMcolors = [0 0 1;1 0 0;0 1 0;0 0 1];
+    IMcode = 1  + mySystem.IM.IMprop.speca + 2*mySystem.IM.IMprop.specb;
        
     % prepare figure background
     chtaxImage = double(mySystem.grid.ChtaxMap);
@@ -114,7 +114,7 @@ function visualize_balls_2D_blank(mySystem)
     %myImc = IMcolors(mySystem.IM.IMprop.Kcap+1,:);
     
     %new code for myIMC
-    %myImc = IMcolors(IMcode,:);
+    myImc = IMcolors(IMcode,:);
     
     % plot immune cells
     scatter(xim,yim,mySystem.params.mycellsize,myImc,'filled')

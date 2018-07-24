@@ -36,16 +36,17 @@ for iloop = 1:numel(act) % only for those that will do anything
                 IMprop.Kcap = [IMprop.Kcap, IMkmax]; % update property vector for remaining kills
                 IMprop.engaged = [IMprop.engaged, 0]; % update property vector for engagement
                 
-                IMprop.speca = [IMprop.speca, randi([0 1])]; % update property vector for specificity
-                IMprop.specb = [IMprop.specb, randi([0 1])]; % update property vector for specificity
+                %specificity of daughters assigned randomly 
+%                 IMprop.speca = [IMprop.speca, randi([0 1])]; % update property vector for specificity
+%                 IMprop.specb = [IMprop.specb, randi([0 1])]; % update property vector for specificity
                 
-%                 if IMprop.speca(currID)
-%                    IMprop.speca = [IMprop.speca, 1]; % update property vector for specificity
-%                    IMprop.specb = [IMprop.specb, 0]; % update property vector for specificity
-%                else
-%                    IMprop.speca = [IMprop.speca, 0]; % update property vector for specificity
-%                    IMprop.specb = [IMprop.specb, 1]; % update property vector for specificity
-%                end 
+                if IMprop.speca(currID)
+                   IMprop.speca = [IMprop.speca, 1]; % update property vector for specificity
+                   IMprop.specb = [IMprop.specb, 0]; % update property vector for specificity
+                else
+                   IMprop.speca = [IMprop.speca, 0]; % update property vector for specificity
+                   IMprop.specb = [IMprop.specb, 1]; % update property vector for specificity
+                end 
                 
             else % migration
                 L(IMcells(m.indxF(currID))) = false; %freeing spot
