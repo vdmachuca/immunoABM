@@ -11,6 +11,7 @@ function visualize_balls_2D_blank(mySystem)
     %[1 0 0] = red, b
     %[0 1 0]= green, a
     TUcolors =[1 0 0;0 1 0];
+    %TUcolors =[0 1 0;1 0 0];
     TUcode = 1 + mySystem.TU.TUprop.isa;
     
     %for when cells can be any combo of a, b, and/or c
