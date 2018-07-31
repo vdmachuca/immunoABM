@@ -27,6 +27,7 @@ del = D | De; % find dead / dying cells; that | is 'or' so del will only be 0 if
 
 act = find((P | Mi) & ~del); % live cells that will proliferate or migrate; P=1 or Mi=0, and del=0
 
+
 for iloop = 1:numel(act) % only for those that will do anything
     currID = act(iloop); % number within stack of currently acting cell
     ngh = m.S(:,m.indxF(currID)); % cells neighborhood

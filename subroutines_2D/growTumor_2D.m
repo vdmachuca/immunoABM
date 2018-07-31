@@ -46,9 +46,13 @@ Lt = updateTumorGrid(L,TUcells); % update tumor grid
 
 % START IMMUNE CELL ROUND ------------------------------------------------
 L([IMcells,TUcells]) = true; % ensure that all cells are present on the grid
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%influx is randomly triggered! 
 if rand()<=IMinfluxProb % randomly trigger influx
 [L,IMcells,IMprop] = IMinflux(L,IMcells,IMprop,IMpmax,IMkmax,IMinflRate,i);
 end
+%influx is randomly triggered! 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 [IMcells,IMprop] = shuffleIM(IMcells,IMprop); % randomly shuffle immune cells
 

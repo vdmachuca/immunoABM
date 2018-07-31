@@ -6,8 +6,12 @@ function [L, TUcells, IMcells, TUprop, IMprop] = initializeSystem_2D(N,M,TUpmax)
     
     % START INITIALIZE TUMOR CELLS ------------------------------------------- 
     %initiate multiple tumor cells
-    posa =int32(N*round(M/2)-round(N/2)-50);
-    posb =int32(N*round(M/2)-round(N/2)+50);
+%     posa =int32(N*round(M/2)-round(N/2)-150);
+%     posb =int32(N*round(M/2)-round(N/2)+150);
+    
+    posa =5000;
+    posb =int32(N*round(M/2)-round(N/2)-100);
+
     TUcells = [posa posb]; 
     %TUcells = int32(N*round(M/2)-round(N/2));
     
