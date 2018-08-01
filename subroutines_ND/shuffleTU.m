@@ -8,4 +8,6 @@ TUprop.Pcap = TUprop.Pcap(shf); % shuffle Pmax property accordingly
 TUprop.isa = TUprop.isa(shf); %shuffle receptor a expression
 TUprop.isb = TUprop.isb(shf); %shuffle receptor b expression
 
+TUprop.isc = TUprop.isc(shf); %shuffle receptor c expression
+
 end

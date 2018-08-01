@@ -16,6 +16,8 @@ function summaryOut = summarizeSystem_2D(mySystem,cnst)
     
     summaryOut.TU_B = sum(mySystem.TU.TUprop.isb); %number receptor b cells
     
+    summaryOut.TU_C = sum(mySystem.TU.TUprop.isc); %number receptor c cells
+    
     summaryOut.IM_Num = numel(mySystem.IM.IMcells); % immune cell number
     summaryOut.IM_FracExhaust = sum(mySystem.IM.IMprop.Kcap == 0) ...
         / numel(mySystem.IM.IMcells); % fraction of exhausted immune cells

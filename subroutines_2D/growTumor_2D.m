@@ -37,6 +37,9 @@ L(Lf) = rand(sum(Lf(:)),1)>stromaPerm; % permeabilize some stroma-filled grid ce
 L([IMcells,TUcells]) = true; % ensure that all cells are present on the grid
 [TUcells,TUprop] = shuffleTU(TUcells,TUprop);
 [L, TUcells, TUprop] = TU_go_grow_die_2D( L, nh, TUcells, TUprop, TUpprol, TUpmig, TUpdeath, TUps);
+
+%[L,TUcells,TUprop] = TU_pattern(L,TUcells,TUprop)
+
 Lt = updateTumorGrid(L,TUcells); % update tumor grid
 % END TUMOR CELL ROUND ---------------------------------------------------
 

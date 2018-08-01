@@ -2,6 +2,10 @@
 % inspired by Jan Poleszczuk
 % this function can be compiled with the MATLAB code generator
 
+%%%%%%%%% NOTES %%%%%%%%%
+%use indxF(currID) to access properties of current cell in the loop
+%%%%%%%%% NOTES %%%%%%%%%
+
 function [L, TUcells, TUprop] = TU_go_grow_die_2D( L, nh, TUcells, ...
     TUprop, TUpprol, TUpmig, TUpdeath, TUps)
 
@@ -49,8 +53,10 @@ for iloop = 1:numel(act) % only for those that will do anything
                TUprop.isa = [TUprop.isa, TUprop.isa(m.indxF(currID))];
                TUprop.isb = [TUprop.isb, TUprop.isb(m.indxF(currID))];
                
+               TUprop.isc = [TUprop.isc, TUprop.isc(m.indxF(currID))];
+               
                %like begets like using if statement
-%                if  TUprop.isa(currID)
+%                if  TUprop.isa(m.indxF(currID))
 %                    TUprop.isa = [TUprop.isa, true];
 %                    TUprop.isb = [TUprop.isb, false];
 %                else
@@ -66,13 +72,15 @@ for iloop = 1:numel(act) % only for those that will do anything
                %like begets like
                TUprop.isa = [TUprop.isa, TUprop.isa(m.indxF(currID))];
                TUprop.isb = [TUprop.isb, TUprop.isb(m.indxF(currID))];
+               
+               TUprop.isc = [TUprop.isc, TUprop.isc(m.indxF(currID))];
                    
                if ~TUprop.isStem(m.indxF(currID)) % reduce proliferation capacity
                 TUprop.Pcap(m.indxF(currID)) = TUprop.Pcap(m.indxF(currID))-1;
                end
                
                %like begets like using if statement 
-%                if  TUprop.isa(currID)
+%                if  TUprop.isa(m.indxF(currID)) 
 %                    TUprop.isa = [TUprop.isa, true];
 %                    TUprop.isb = [TUprop.isb, false];
 %                else

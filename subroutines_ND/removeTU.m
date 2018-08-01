@@ -7,4 +7,6 @@ function [TUcells,TUprop] = removeTU(TUcells,TUprop,idx)
     TUprop.isa(idx) = []; %remove receptor expression 
     TUprop.isb(idx) = [];
     
+    TUprop.isc(idx) = [];
+    
 end
