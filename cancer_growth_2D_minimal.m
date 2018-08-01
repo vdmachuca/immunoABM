@@ -5,7 +5,7 @@
 % How does it work? open this file in Matlab and run it.
 
 close all, clear all, format compact, clc
-addpath('./subroutines_2D/'); % include all functions for the 2D model
+addpath('./subroutines_2D/'); % include all functions for the 2D model 
 addpath('./subroutines_ND/'); % include generic subroutines
 
 % all parameters for the model are stored in the structure "sysTempl".
@@ -25,7 +25,7 @@ saveImage = true;
 saveVideo = true;
 
 % add/override some global variables after loading the system
-cnst.nSteps   = 10;    % how many iterations in the first place
+cnst.nSteps   = 50;    % how many iterations in the first place
 cnst.drawWhen = 2;    % draw after ... iterations
 expname = 'minimal';    % experiment name that will be used to save results
 

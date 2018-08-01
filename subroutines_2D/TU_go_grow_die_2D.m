@@ -45,29 +45,40 @@ for iloop = 1:numel(act) % only for those that will do anything
                TUprop.isStem = [TUprop.isStem, true];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))]; 
                
-               if  TUprop.isa(currID)
-                   TUprop.isa = [TUprop.isa, true];
-                   TUprop.isb = [TUprop.isb, false];
-               else
-                   TUprop.isa = [TUprop.isa, false];
-                   TUprop.isb = [TUprop.isb, true];
-               end     
+               %like begets like
+               TUprop.isa = [TUprop.isa, TUprop.isa(m.indxF(currID))];
+               TUprop.isb = [TUprop.isb, TUprop.isb(m.indxF(currID))];
+               
+               %like begets like using if statement
+%                if  TUprop.isa(currID)
+%                    TUprop.isa = [TUprop.isa, true];
+%                    TUprop.isb = [TUprop.isb, false];
+%                else
+%                    TUprop.isa = [TUprop.isa, false];
+%                    TUprop.isb = [TUprop.isb, true];
+%                end     
                
             else % asymmetric division
                 
                TUprop.isStem = [TUprop.isStem, false];
                TUprop.Pcap = [TUprop.Pcap, TUprop.Pcap(m.indxF(currID))-1];
+               
+               %like begets like
+               TUprop.isa = [TUprop.isa, TUprop.isa(m.indxF(currID))];
+               TUprop.isb = [TUprop.isb, TUprop.isb(m.indxF(currID))];
+                   
                if ~TUprop.isStem(m.indxF(currID)) % reduce proliferation capacity
                 TUprop.Pcap(m.indxF(currID)) = TUprop.Pcap(m.indxF(currID))-1;
                end
                
-               if  TUprop.isa(currID)
-                   TUprop.isa = [TUprop.isa, true];
-                   TUprop.isb = [TUprop.isb, false];
-               else
-                   TUprop.isa = [TUprop.isa, false];
-                   TUprop.isb = [TUprop.isb, true];
-               end  
+               %like begets like using if statement 
+%                if  TUprop.isa(currID)
+%                    TUprop.isa = [TUprop.isa, true];
+%                    TUprop.isb = [TUprop.isb, false];
+%                else
+%                    TUprop.isa = [TUprop.isa, false];
+%                    TUprop.isb = [TUprop.isb, true];
+%                end  
                
             end
         else % migration

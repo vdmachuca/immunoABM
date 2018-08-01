@@ -5,7 +5,7 @@ function visualize_balls_2D_blank(mySystem)
     % create tumor cell colors and immune cell colors
     
     % color depending on TUpmax 
-    %TUcolors = double(hot(3*double(mySystem.params.TUpmax))); %colormap for tumor cells
+    TUcolors = double(hot(3*double(mySystem.params.TUpmax))); %colormap for tumor cells
     
     %color by receptor expression
     %[1 0 0] = red, b
