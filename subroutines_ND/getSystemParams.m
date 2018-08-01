@@ -8,11 +8,13 @@ mySystem.params.debugmode = false; % check consistency in each iteration, comput
 % END SYSTEM PROPERTIES -------------------------------------------
 
 % START INITIALIZE TUMOR CELLS -------------------------------------------
-mySystem.params.TUpprol = 0.5055;   % HISTO GENERATED - probability of proliferation
+%mySystem.params.TUpprol = 0.5055;   % HISTO GENERATED - probability of proliferation
+mySystem.params.TUpprol = 0.8;
 mySystem.params.TUpmig = 0.35;      % probability of migrating, default 0.35
 mySystem.params.TUpdeath = 1-(1-0.0319)^4;  % HISTO GENERATED - probability of spontaneous death
 mySystem.params.TUpmax = 10;        % max. proliferation capacity, default 10
 mySystem.params.TUps = 0.7;         % probability of symmetric division, default 0.7
+
 % END INITIALIZE TUMOR CELLS ---------------------------------------------
 
 % START INITIALIZE LYMPHOCYTES ------------------------------------------

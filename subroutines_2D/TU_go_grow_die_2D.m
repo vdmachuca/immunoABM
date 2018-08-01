@@ -52,7 +52,6 @@ for iloop = 1:numel(act) % only for those that will do anything
                %like begets like
                TUprop.isa = [TUprop.isa, TUprop.isa(m.indxF(currID))];
                TUprop.isb = [TUprop.isb, TUprop.isb(m.indxF(currID))];
-               
                TUprop.isc = [TUprop.isc, TUprop.isc(m.indxF(currID))];
                
                %like begets like using if statement
@@ -72,7 +71,6 @@ for iloop = 1:numel(act) % only for those that will do anything
                %like begets like
                TUprop.isa = [TUprop.isa, TUprop.isa(m.indxF(currID))];
                TUprop.isb = [TUprop.isb, TUprop.isb(m.indxF(currID))];
-               
                TUprop.isc = [TUprop.isc, TUprop.isc(m.indxF(currID))];
                    
                if ~TUprop.isStem(m.indxF(currID)) % reduce proliferation capacity
