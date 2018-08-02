@@ -31,7 +31,7 @@ if ismember(i,[20,40,60,80])
             %[~,coordsNewIMcells] = datasample(L(:),IMinflRate,'Replace',false);
             
             %coordsNewIMcells = [30150,30151,30152,30153,30154,30155,30156,30157,30158,30159];
-            coordsNewIMcells = 30151:30160;
+            coordsNewIMcells = 30151:30190;
             
             %x = [30150:3016, 29830:29840];
             %coordsNewIMcells = randi([1 numel(x)],1,IMinflRate);
@@ -49,8 +49,9 @@ if ismember(i,[20,40,60,80])
             IMprop.Kcap = [IMprop.Kcap, repmat(IMkmax,1,nNewCells)];  % add properties
             IMprop.engaged = [IMprop.engaged, zeros(1,nNewCells)];    % add properties
             
-%             IMprop.speca = [IMprop.speca, ones(1,nNewCells)];    % add properties
-%             IMprop.specb = [IMprop.specb, ones(1,nNewCells)];    % add properties
+            %all specific to b
+            IMprop.speca = [IMprop.speca, false(1,nNewCells)];    % add properties
+            IMprop.specb = [IMprop.specb, ones(1,nNewCells)];    % add properties
 %             
             %IMprop.speca = [IMprop.speca, randi([0 1],1,nNewCells)];    % add properties
             %IMprop.specb = [IMprop.specb, randi([0 1],1,nNewCells)];    % add properties
@@ -59,8 +60,8 @@ if ismember(i,[20,40,60,80])
             %IMprop.specb = [IMprop.specb, ];    % add properties
             
             %half specificity a, half specificity b
-            IMprop.speca = [IMprop.speca,[false(1,floor(nNewCells/2)) ones(1,nNewCells-floor(nNewCells/2))]];
-            IMprop.specb = [IMprop.specb,[ones(1,floor(nNewCells/2)) false(1,nNewCells-floor(nNewCells/2))]];
+%             IMprop.speca = [IMprop.speca,[false(1,floor(nNewCells/2)) ones(1,nNewCells-floor(nNewCells/2))]];
+%             IMprop.specb = [IMprop.specb,[ones(1,floor(nNewCells/2)) false(1,nNewCells-floor(nNewCells/2))]];
 
        end 
    end

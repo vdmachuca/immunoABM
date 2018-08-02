@@ -8,8 +8,8 @@ function visualize_balls_2D_blank(mySystem)
     %TUcolors = double(hot(3*double(mySystem.params.TUpmax))); %colormap for tumor cells
     
     %color by receptor expression
-    %[1 0 0] = red, b
-    %[0 1 0]= green, a
+    %[1 0 0] = red, a
+    %[0 1 0]= green, b
     %[0 0 1]= blue, c 
     
     %2 colors
@@ -138,6 +138,14 @@ function visualize_balls_2D_blank(mySystem)
     % add time counter to image
     text(beginSc,beginSc/2,[num2str(mySystem.grid.StepsDone/2),' days'],...
         'Color','k','FontWeight','bold','FontSize',18,'VerticalAlignment','top')
+    
+    %add legend
+    text(beginSc+100,beginSc/2,'Receptor A',...
+        'Color','r','FontWeight','bold','FontSize',15,'VerticalAlignment','top')
+    text(beginSc+200,beginSc/2,'Receptor B',...
+        'Color','g','FontWeight','bold','FontSize',15,'VerticalAlignment','top')
+    text(beginSc+300,beginSc/2,'Receptor C',...
+        'Color','b','FontWeight','bold','FontSize',15,'VerticalAlignment','top')
     
     hold off
     
