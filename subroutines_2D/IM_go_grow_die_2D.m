@@ -8,7 +8,7 @@ function [L, IMcells, IMprop] =  IM_go_grow_die_2D(IMcells, IMprop, IMpprol, IMp
 m = getAdjacent_2D(L,IMcells,nh); % create masks for adjacent positions
 
 % P, D and Mi are mutually exclusive; Ps and De are dependent on P
-[P,D,Mi] = CellWhichAction(m.randI,IMpprol,IMpdeath,IMpmig);
+[P,D,Mi,C] = CellWhichAction(m.randI,IMpprol,IMpdeath,IMpmig);
 De = P & (IMprop.Pcap(m.indxF) == 0); % proliferation capacity exhaution -> Die
 del = D | De; % cells to delete
 act = find((P | Mi) & ~del); % indices to the cells that will perform action

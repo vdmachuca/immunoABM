@@ -48,7 +48,8 @@ function visualize_balls_2D_blank(mySystem)
 %     [0 1 0] = green, just a
 %     [1 0 0] = red, just b 
 %     [1 0 1] = blue, both a and b
-    IMcolors = [0 0 1;1 0 0;0 1 0;0 0 1];
+    %IMcolors = [0 0 1;1 0 0;0 1 0;0 0 1];
+    IMcolors = [1 0 1;1 0 1;1 0 1;1 0 1];
     IMcode = 1  + mySystem.IM.IMprop.speca + 2*mySystem.IM.IMprop.specb;
        
     % prepare figure background

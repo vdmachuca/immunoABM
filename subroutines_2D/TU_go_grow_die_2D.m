@@ -21,7 +21,7 @@ end
 % P, D and Mi are mutually exclusive; Ps and De are dependent on P
 % all are either 1 or 0, depending on the conditionals in CellWhichAction.m, which depends on getAdjacent_2D.m
 
-[P,D,Mi] = CellWhichAction(m.randI,TUpprol,TUpdeath,TUpmig);
+[P,D,Mi,C] = CellWhichAction(m.randI,TUpprol,TUpdeath,TUpmig);
 
 Ps = P & rand(1,m.nC) <= TUps & TUprop.isStem(m.indxF); % symmetric division
 
@@ -32,14 +32,15 @@ del = D | De; % find dead / dying cells; that | is 'or' so del will only be 0 if
 act = find((P | Mi) & ~del); % live cells that will proliferate or migrate; P=1 or Mi=0, and del=0
 
 
-for iloop = 1:numel(act) % only for those that will do anything
+for iloop = 1:numel(act) % only for those that will do anything; i.e. not die
     currID = act(iloop); % number within stack of currently acting cell
     ngh = m.S(:,m.indxF(currID)); % cells neighborhood
     ngh2 = ngh(ngh>0); % erasing places that were previously occupied
     indO = find(~L(ngh2),1,'first'); %selecting free spot
+    
+    
     if ~isempty(indO) % if there is still a free spot
         L(ngh2(indO)) = true; % add cell to grid
-        
         
         if P(currID) % proliferation happens
             newCell = uint32(ngh2(indO)); % find place for new cell
@@ -91,9 +92,27 @@ for iloop = 1:numel(act) % only for those that will do anything
             L(TUcells(m.indxF(currID))) = false; % freeing spot
             TUcells(m.indxF(currID)) = uint32(ngh2(indO)); % update cell position
         end
-        
-        
     end
+    %%%%%%% CHANGE in receptor expression
+    % change occurs in every iteration, doesn't matter if there are empty spots 
+        
+    if C(currID)
+        if TUprop.isa(m.indxF(currID))
+            TUprop.isa(m.indxF(currID))=0;
+            TUprop.isb(m.indxF(currID))=(randi([0 1]));
+            TUprop.isc(m.indxF(currID))=1 - TUprop.isb(m.indxF(currID));
+        elseif TUprop.isb(m.indxF(currID))
+            TUprop.isb(m.indxF(currID))=0;
+            TUprop.isc(m.indxF(currID))=(randi([0 1]));
+            TUprop.isa(m.indxF(currID))=1 - TUprop.isc(m.indxF(currID));
+        else
+            TUprop.isc(m.indxF(currID))=0;
+            TUprop.isa(m.indxF(currID))=(randi([0 1]));
+            TUprop.isb(m.indxF(currID))=1 - TUprop.isa(m.indxF(currID));
+        end
+    end
+        
+    %%%%%%%   
 end
 
 if ~isempty(del) % remove dead tumor cells
